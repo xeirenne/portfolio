@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandra May Sosa | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --blue: #1F4E79;
+    --mid: #2E6DA4;
+    --accent: #4FA3D1;
+    --light: #D6E4F0;
+    --white: #F8FAFC;
+    --text: #1a2a3a;
+    --muted: #5a7a9a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,27,42,0.96); backdrop-filter: blur(8px);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; color: var(--accent); font-size: 1.2rem; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--light); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.8; transition: opacity 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    padding: 6rem 2rem 4rem; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,163,209,0.12) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(31,78,121,0.3) 0%, transparent 70%);
+  }
+  .hero-inner { max-width: 680px; text-align: center; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block; background: rgba(79,163,209,0.15); border: 1px solid rgba(79,163,209,0.3);
+    color: var(--accent); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.35rem 1rem; border-radius: 999px; margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4rem);
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    color: rgba(214,228,240,0.75); font-size: 1.05rem; line-height: 1.75;
+    max-width: 520px; margin: 0 auto 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary {
+    background: var(--accent); color: var(--navy); font-weight: 500; font-size: 0.9rem;
+    padding: 0.75rem 2rem; border-radius: 999px; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,163,209,0.35); }
+  .btn-outline {
+    border: 1px solid rgba(214,228,240,0.3); color: var(--light); font-size: 0.9rem;
+    padding: 0.75rem 2rem; border-radius: 999px; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); background: rgba(79,163,209,0.08); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 820px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); margin-bottom: 2.5rem; }
+
+  /* ABOUT */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .about-card {
+    background: var(--navy); border-radius: 16px; padding: 2.5rem;
+    color: var(--light); line-height: 1.8; font-size: 0.95rem;
+  }
+  .about-card p { opacity: 0.85; }
+  .about-stats { display: flex; flex-direction: column; gap: 1rem; }
+  .stat-item {
+    background: var(--light); border-radius: 12px; padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--blue); }
+  .stat-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+
+  /* SKILLS */
+  #skills { background: #EEF5FB; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .skill-card {
+    background: var(--white); border-radius: 12px; padding: 1.5rem;
+    border: 1px solid rgba(31,78,121,0.1); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(31,78,121,0.1); }
+  .skill-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .skill-name { font-weight: 500; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.25rem; }
+  .skill-tag { font-size: 0.75rem; color: var(--muted); }
+  .skill-bar { margin-top: 0.75rem; height: 4px; background: var(--light); border-radius: 999px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--mid); border-radius: 999px; }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--white); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .portfolio-card {
+    border: 1px solid rgba(31,78,121,0.12); border-radius: 14px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(31,78,121,0.12); }
+  .portfolio-thumb {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; font-weight: 300;
+  }
+  .thumb-blue { background: linear-gradient(135deg, #1F4E79, #2E6DA4); }
+  .thumb-teal { background: linear-gradient(135deg, #0F6E56, #1D9E75); }
+  .thumb-navy { background: linear-gradient(135deg, #0D1B2A, #1F4E79); }
+  .portfolio-info { padding: 1.25rem; }
+  .portfolio-title { font-weight: 500; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.35rem; }
+  .portfolio-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.75rem; }
+  .portfolio-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.72rem; background: var(--light); color: var(--blue);
+    padding: 0.25rem 0.6rem; border-radius: 999px; font-weight: 500;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--navy); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-label { color: var(--accent); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .contact-item {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(214,228,240,0.1);
+    border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .contact-icon { width: 44px; height: 44px; background: rgba(79,163,209,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .contact-label { font-size: 0.75rem; color: rgba(214,228,240,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem; }
+  .contact-value { color: var(--light); font-size: 0.9rem; }
+
+  /* FOOTER */
+  footer { background: #080f17; padding: 1.5rem; text-align: center; color: rgba(214,228,240,0.35); font-size: 0.8rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sandra May Sosa</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Open to Work &nbsp;·&nbsp; Manila, Philippines</div>
+    <h1>Hi, I'm <span>Sandra May Sosa</span></h1>
+    <p>Computer Engineering student at PUP. Detail-oriented, reliable, and easy to work with. I help clients stay organized so they can focus on what matters.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About me</div>
+    <h2 class="section-title">Who I am</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <p>I'm a 2nd year BSCPE student at the Polytechnic University of the Philippines. I enjoy organizing data, doing research, and making sure everything is accurate and neat.</p>
+        <br>
+        <p>I'm new to freelancing but I take deadlines seriously. If something comes up, I'll let you know right away. Fast learner, no ghosting. 😊</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-num">2nd</div>
+          <div class="stat-desc">Year BSCPE Student<br>Polytechnic University of the Philippines</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">$7</div>
+          <div class="stat-desc">Hourly rate<br>Flexible for long-term clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">EN</div>
+          <div class="stat-desc">English & Tagalog<br>Both fluent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">What I can do</div>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Data Entry</div>
+        <div class="skill-tag">Core skill</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📋</div>
+        <div class="skill-name">Microsoft Excel</div>
+        <div class="skill-tag">Formulas, VLOOKUP</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔍</div>
+        <div class="skill-name">Online Research</div>
+        <div class="skill-tag">Data collection</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📧</div>
+        <div class="skill-name">Email Management</div>
+        <div class="skill-tag">Virtual assistance</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗂️</div>
+        <div class="skill-name">Google Sheets</div>
+        <div class="skill-tag">Spreadsheet org</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💬</div>
+        <div class="skill-name">Communication</div>
+        <div class="skill-tag">Clear & responsive</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-label">Sample work</div>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="portfolio-grid">
+      <a href="https://www.upwork.com/freelancers/~01969ea7802b3bb525?p=2035655938065874944" target="_blank" style="text-decoration:none;">
+      <div class="portfolio-card">
+        <div class="portfolio-thumb thumb-blue">📦</div>
+        <div class="portfolio-info">
+          <div class="portfolio-title">Product Inventory Tracker</div>
+          <div class="portfolio-desc">15-item inventory spreadsheet with auto status tracking (In Stock / Low Stock / Critical) and total value formulas.</div>
+          <div class="portfolio-tags">
+            <span class="tag">Data Entry</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Formulas</span>
+          </div>
+        </div>
+      </div>
+      </a>
+      <a href="https://xeirenne.github.io/portfolio" target="_blank" style="text-decoration:none;">
+      <div class="portfolio-card">
+        <div class="portfolio-thumb thumb-navy">🌐</div>
+        <div class="portfolio-info">
+          <div class="portfolio-title">Personal Portfolio Page</div>
+          <div class="portfolio-desc">This page! Built using HTML and CSS, demonstrating basic front-end skills as a BSCPE student.</div>
+          <div class="portfolio-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">BSCPE</span>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Let's work together</div>
+    <h2 class="section-title">Contact me</h2>
+    <div class="contact-grid">
+      <a href="https://www.upwork.com/freelancers/~01969ea7802b3bb525" target="_blank" style="text-decoration:none;">
+      <div class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">Upwork</div>
+          <div class="contact-value">Sandra May Sosa</div>
+        </div>
+      </div>
+      </a>
+      <a href="https://www.linkedin.com/in/sandra-may-sosa/" target="_blank" style="text-decoration:none;">
+      <div class="contact-item">
+        <div class="contact-icon">🔗</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">Sandra May Sosa</div>
+        </div>
+      </div>
+      </a>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Manila, Philippines</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⏰</div>
+        <div>
+          <div class="contact-label">Availability</div>
+          <div class="contact-value">Part-time · Weekends</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Sandra May Sosa | Built with HTML & CSS
+</footer>
+
+</body>
+</html>
